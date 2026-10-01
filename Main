@@ -1,0 +1,126 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\title{Research}
+\author{Elijah Kammer}
+\date{October 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\subsection{Elisa Robot Charging and Storage}
+
+One challenge when working with 100 Elisa robots is to charge and
+store the robots efficiently. Originally, the available charging
+station could hold only three robots at a time.  Three charging
+stations were available, which meant that  nine robots could be
+charged using the stations at once. The robots also had to be pushed
+onto the charging contacts, and the spring-loaded contact pins could
+allow a robot to move away from the contacts and stop charging.
+
+Another major problem was the amount of power required to charge a
+large number of robots. A complete charge takes approximately three
+hours, and each robot can require approximately 0.4 A from a 5 V
+power supply. If 100 robots were charged at the same time, the
+theoretical current requirement would be
+
+\[
+I_{\text{total}} = 100(0.4~\text{A}) = 40~\text{A}.
+\]
+
+Therefore, a charging system capable of supporting all 100 robots
+simultaneously could require as much as 40 A at 5 V. This made power
+distribution an important consideration when designing the charging
+system.
+
+To address this problem, 25-port USB charging stations with a
+20 A power supply were selected. Each charging station was limited
+to 20 Elisa robots. Based on the maximum current requirement of
+0.4 A per robot, the expected maximum current for 20 robots is
+
+\[
+I_{\text{station}} = 20(0.4~\text{A}) = 8~\text{A}.
+\]
+
+This is below the 20 A rating of the charging station and provides
+additional capacity instead of operating the power supply near its
+maximum rating.
+
+Another possible design was to use the exposed charging contact pins
+on the Elisa robots and construct conductive plates that supplied
+5 V to multiple robots. However, this approach was not selected.
+Although it could reduce the number of individual cables, it would
+introduce additional possible failure conditions. For example, a
+robot could be placed on the contacts incorrectly, conductive objects
+could accidentally contact the exposed power rails, or a new user
+could place a robot into the system without understanding the required
+orientation. The charging contacts would also need to maintain
+reliable physical contact with every robot.
+
+USB cables were selected instead because the charging connection is
+more obvious to the user and reduces the amount of exposed powered
+conductive material. A user can place a robot in the holder and
+connect its USB charging cable without having to understand a
+special contact arrangement. This makes the system easier to use
+when multiple researchers or new users are working with the robots
+and reduces the opportunities for incorrect charging connections.
+
+A cylindrical holder was designed and 3D printed to vertically store
+multiple Elisa robots, as shown in Fig.~\ref{fig:elisa_holder}. The
+robots are stacked inside the holder while openings along the side
+provide access to USB charging connections. This allows multiple
+robots to be charged while keeping the robots and cables organized
+in a relatively small area.
+
+Another advantage of the holder is that the openings allow the
+charging-status LEDs to remain visible. The charging state can
+therefore be checked without removing a robot from the holder.
+A change in the charging indication from red to green provides a
+simple visual method for determining which robots are still charging
+and which are ready for use. This is particularly useful when
+preparing a large number of robots for swarm experiments.
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{IMG_6786.JPG}
+        \caption{3D-printed Elisa storage and charging holder.}
+        \label{fig:holder_empty}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{IMG_6792.JPG}
+        \caption{Elisa robot and onboard components.}
+        \label{fig:elisa_robot}
+    \end{subfigure}
+
+    \vspace{0.3cm}
+
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{IMG_6791.JPG}
+        \caption{Multiple Elisa robots charging in the holder.}
+        \label{fig:holder_charging}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{IMG_6787.JPG}
+        \caption{Top view of the internal storage structure.}
+        \label{fig:holder_top}
+    \end{subfigure}
+
+    \caption{3D-printed storage and charging system developed for
+    organizing and monitoring multiple Elisa robots.}
+    \label{fig:elisa_holder}
+\end{figure}
+
+\end{document}
